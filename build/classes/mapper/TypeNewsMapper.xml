@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mucfc.mapper.TypeNewsMapper">	
+	<!--  查询单条记录  -->  
+    <select id="showTypeNews" parameterType="string" resultType="News">  
+       <!-- select case_equipment, count(*) as counts from cases group by case_equipment --> 
+		SELECT case_name, case_id FROM cases WHERE case_equipment=#{case_type}
+    </select>  
+</mapper>

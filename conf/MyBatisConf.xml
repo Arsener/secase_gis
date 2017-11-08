@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   <!-- 配置映射类的别名 -->
+ 	<typeAliases>
+      <typeAlias alias="Place" type="com.mucfc.model.Place"/> 
+      <typeAlias alias="Type" type="com.mucfc.model.Type"/> 
+      <typeAlias alias="News" type="com.mucfc.model.News"/> 
+      <typeAlias alias="Detail" type="com.mucfc.model.Detail"/> 
+      <typeAlias alias="Location" type="com.mucfc.model.Location"/> 
+   </typeAliases>  
+   <!-- 配置Mapper文件的路径 -->
+   <mappers>
+       <mapper resource="mapper/PlaceMapper.xml"/>
+       <mapper resource="mapper/TypeMapper.xml"/>
+       <mapper resource="mapper/TypeNewsMapper.xml"/>
+       <mapper resource="mapper/PlaceNewsMapper.xml"/>
+       <mapper resource="mapper/DetailMapper.xml"/>
+       <mapper resource="mapper/LocationMapper.xml"/>
+   </mappers>
+</configuration>

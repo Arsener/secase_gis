@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mucfc.mapper.PlaceMapper">	
+	<!--  查询单条记录  -->  
+    <select id="showByPlace" resultType="Place">  
+        select place_name, case_count, place_lon, place_lat from places as p,  ((select case_place, count(*) as case_count from cases group by case_place) as c) where p.place_name = c.case_place   
+    	
+		<!-- SELECT userName AS place_name, userId AS case_count, userAge AS place_lon, userAge AS place_lat FROM t_user;  -->
+    </select>  
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mucfc.mapper.DetailMapper">	
+	<!--  查询单条记录  -->  
+    <select id="showDetail" parameterType="int" resultType="Detail">  
+       SELECT case_name, case_describe, case_equipment, case_place, place_lon, place_lat FROM cases, places WHERE places.place_name = cases.case_place AND case_id = #{case_id}
+    </select>  
+</mapper>

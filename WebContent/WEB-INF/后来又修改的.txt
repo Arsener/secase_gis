@@ -1,0 +1,2 @@
+添加香港、澳门特别行政区选项
+添加了一个model：Location，在showCounts.jsp中通过session获取location获得经纬度，不在循环中获取经纬度，删掉lon、lat两个变量

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="  
+           http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/special_equipment_cases?characterEncoding=utf8&amp;useSSL=true" />
+		<property name="username" value="root" />
+		<property name="password" value="970306" />
+	</bean>
+
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:MyBatisConf.xml" />
+		<!-- <property name="typeAliasesPackage" value="com.tiantian.ckeditor.model" 
+			/> -->
+	</bean>
+    
+    <bean id="placeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.PlaceMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="typeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.TypeMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="typeNewsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.TypeNewsMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="placeNewsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.PlaceNewsMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="detailMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.DetailMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="locationMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.LocationMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+	<!-- 自动扫描注解的bean -->
+	<context:component-scan base-package="com.mucfc.dao" />
+
+</beans>

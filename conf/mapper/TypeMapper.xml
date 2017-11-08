@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mucfc.mapper.TypeMapper">	
+	<!--  查询单条记录  -->  
+    <select id="selectByType" resultType="Type">  
+       <!-- select case_equipment, count(*) as counts from cases group by case_equipment --> 
+		SELECT case_equipment, COUNT(*) AS counts FROM cases GROUP BY case_equipment
+    </select>  
+</mapper>
