@@ -132,24 +132,52 @@
      	// 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 		// 显示标题，图例和空的坐标轴
-		myChart.setOption({
+		var seriesLabel = {
+		    normal: {
+		        show: true,
+		        textBorderColor: '#333',
+		    }
+		}
+
+		option = {
 		    title: {
 		        text: '各地区案例数量'
 		    },
-		    tooltip: {},
+		    tooltip: {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'shadow'
+		        }
+		    },
 		    legend: {
-		        data:['案例数量']
+		        data: ['案例数量']
+		    },
+		    grid: {
+		        left: 100
 		    },
 		    xAxis: {
-		        data: place_names
+		        type: 'value',
+		        name: '数量',
+		        axisLabel: {
+		            formatter: '{value}'
+		        }
 		    },
-		    yAxis: {},
-		    series: [{
-		        name: '案例数量',
-		        type: 'bar',
-		        data: place_counts
-		    }]
-		});
+		    yAxis: {
+		        type: 'category',
+		        inverse: true,
+		        data: place_names
+		        
+		    },
+		    series: [
+		        {
+		            name: '案例数量',
+		            type: 'bar',
+		            label: seriesLabel,
+		            data: place_counts
+		        }
+		    ]
+		};
+		
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
