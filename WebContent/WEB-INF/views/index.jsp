@@ -17,6 +17,7 @@
       #container {
       	width:700px; 
       	height: 500px; 
+      	margin: 0px auto;
       }  
     </style>
     
@@ -24,6 +25,8 @@
   </head>
   
   <body>
+    <h1 align="center"> <font color="red"> 特种设备案例展示 </font> </h1>
+    
     <div id="container" tabindex="0">
    	    
     </div> 
@@ -75,12 +78,35 @@
             showProvince(case_place);
     	}
     </script>
-    <form action="showCounts" method="post">
-        <input type="submit" value="按省份展示数量"/>
-    </form>
-    <form action="showTypes" method="post">
-        <input type="submit" value="按类别展示数量"/>
-    </form>
+    </br>
+    
+    <div align="center"> 
+	<table>
+	<tr>
+	<td>
+	    <form action="showCounts" method="post">
+            <input type="submit" value="按省份展示数量"/>
+        </form>
+    </td>
+    <td>
+        <form action="showTypes" method="post">
+            <input type="submit" value="按类别展示数量"/>
+        </form>
+    </td>
+    </tr>
+	</table>
+	
+	</br>
+	
+	<!--底部-->
+	<p align="center"> GIS最垃圾小组 </p>
+	
+	<!-- 音乐播放器 -->
+	<div align="center">
+	    <embed src="C:\Users\arsener\workspace_GIS\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
+	    hidden="false" autostart="true" loop="true">
+	    </embed>
+	</div>
     
     <form action="" method="post">
     	<p>选择省份：
@@ -142,7 +168,11 @@
 	<h4>地区：<%=(String)session.getAttribute("case_place") %>&nbsp;&nbsp;&nbsp;&nbsp;类别：<%=(String)session.getAttribute("case_type") %></h4>
    
     <c:forEach items="${news }" var="news_item" varStatus="vs">
-		<a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+      <ul>
+        <li>
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+	    </li>
+	  </ul>
 	</c:forEach>
   </body>
 </html>

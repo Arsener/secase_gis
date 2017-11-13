@@ -23,16 +23,18 @@
       #container {
       	width:700px; 
       	height: 500px; 
+     	margin: 0px auto;
       }  
     </style>
     
     <title>特种设备案例地区数量展示</title>
   </head>
   <body>
+    <h1 align="center"> <font color="red"> 特种设备案例地区数量展示 </font> </h1>
 	<div id="container" tabindex="0">
    	    
     </div> 
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width: 600px;height:400px;float:left"></div>
     
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=3b1abac71d9c69f21b69c476744f7d98"></script>  
   
@@ -182,14 +184,28 @@
         myChart.setOption(option);
     </script>
     
-    <form action="showCounts" method="post">
-        <input type="submit" value="按省份展示数量"/>
-    </form>
-    <form action="showTypes" method="post">
-        <input type="submit" value="按类别展示数量"/>
-    </form>
+    <div style="left-margin:500px;width:200px"></div>
     
-    <form action="" method="get">
+    </br>
+    
+    <div align="left"> 
+	<table>
+	<tr>
+	<td>
+	    <form action="showCounts" method="post">
+            <input type="submit" value="按省份展示数量"/>
+        </form>
+    </td>
+    <td>
+        <form action="showTypes" method="post">
+            <input type="submit" value="按类别展示数量"/>
+        </form>
+    </td>
+    </tr>
+	</table>
+	</div>
+    
+    <form action="" method="post">
     	<p>选择省份：
     		<select name="case_place">
     			<option value="广东省">广东省</option>
@@ -228,13 +244,32 @@
     			<option value="澳门特别行政区">澳门特别行政区</option>
     	    </select>
     	</p>
-		<input type="submit" value="展示此类别全部案例">
+		<input type="submit" value="展示此地区全部案例">
     </form>
     
     <h3>当前展示案例地区为：<%=(String)session.getAttribute("case_place") %></h3>
     
     <c:forEach items="${news }" var="news_item" varStatus="vs">
-		<a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+      <ul>
+    	<li>
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+		</li>
+	  </ul>	
 	</c:forEach>
+	
+	</br>
+	</br>
+	</br>
+	
+	
+	
+	<!--底部-->
+	<p align="center"> GIS最垃圾小组 </p>
+	
+	<div align="center">
+	    <embed src="C:\Users\arsener\workspace_GIS\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
+	    hidden="false" autostart="true" loop="true">
+	    </embed>
+	</div>
   </body>
 </html>

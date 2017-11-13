@@ -18,16 +18,18 @@
       #container {
       	width:700px; 
       	height: 500px; 
+      	margin: 0px auto;
       }  
     </style>
     
     <title>特种设备案例类别数量展示</title>
   </head>
   <body>
+    <h1 align="center"> <font color="red"> 特种设备案例类别数量展示 </font> </h1>
 	<div id="container" tabindex="0">
    	    
     </div> 
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width: 600px;height:400px;float:left"></div>
     
    
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=3b1abac71d9c69f21b69c476744f7d98"></script>
@@ -104,17 +106,31 @@
         myChart.setOption(option);
     </script>
     
+    <div style="left-margin:500px;width:200px"></div>
     
-    <form action="showCounts" method="post">
-        <input type="submit" value="按省份展示数量"/>
-    </form>
-    <form action="showTypes" method="post">
-        <input type="submit" value="按类别展示数量"/>
-    </form>
+    </br>
+    
+    <div align="left"> 
+	<table>
+	<tr>
+	<td>
+	    <form action="showCounts" method="post">
+            <input type="submit" value="按省份展示数量"/>
+        </form>
+    </td>
+    <td>
+        <form action="showTypes" method="post">
+            <input type="submit" value="按类别展示数量"/>
+        </form>
+    </td>
+    </tr>
+	</table>
+	</div>
     
     <form action="showTypes" method="post">
     	<p>选择设备种类：
     		<select name="case_type">
+    		    <option value="">请选择...</option>
     			<option value="大型游乐设施">大型游乐设施</option>
     			<option value="锅炉">锅炉</option>
     			<option value="电梯">电梯</option>
@@ -131,8 +147,21 @@
     <h3>当前展示案例设备类别为：<%=(String)session.getAttribute("case_type") %></h3>
     
     <c:forEach items="${news }" var="news_item" varStatus="vs">
-		<a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+      <ul>
+        <li>
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+	    </li>
+	  </ul>
 	</c:forEach>
+	
+	<!--底部-->
+	<p align="center"> GIS最垃圾小组 </p>
+	
+	<div align="center">
+	    <embed src="E:\JAVA\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
+	    hidden="false" autostart="true" loop="true">
+	    </embed>
+	</div>
     
   </body>
 </html>
