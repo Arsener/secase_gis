@@ -18,5 +18,6 @@
        <mapper resource="mapper/PlaceNewsMapper.xml"/>
        <mapper resource="mapper/DetailMapper.xml"/>
        <mapper resource="mapper/LocationMapper.xml"/>
+       <mapper resource="mapper/IndexNewsMapper.xml"/>
    </mappers>
 </configuration>

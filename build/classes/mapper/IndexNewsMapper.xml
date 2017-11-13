@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mucfc.mapper.IndexNewsMapper">	
+	<!--  查询单条记录  -->  
+    <select id="selectNewsByPlace" parameterType="string" resultType="News">  
+    	SELECT case_id, case_name FROM cases WHERE case_place=#{case_place}
+	</select>  
+    <select id="selectNewsByType" parameterType="string" resultType="News">  
+    	SELECT case_id, case_name FROM cases WHERE case_equipment=#{case_type}
+	</select> 
+    <select id="selectNewsByBoth" parameterType="string" resultType="News">  
+    	SELECT case_id, case_name FROM cases WHERE case_place=#{0} AND case_equipment=#{1}
+	</select> 	
+    <select id="selectNewsByNeither" resultType="News">  
+    	SELECT case_id, case_name FROM cases
+	</select> 
+</mapper>

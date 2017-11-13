@@ -189,7 +189,7 @@
         <input type="submit" value="按类别展示数量"/>
     </form>
     
-    <form action="showCounts" method="post">
+    <form action="" method="get">
     	<p>选择省份：
     		<select name="case_place">
     			<option value="广东省">广东省</option>
