@@ -134,6 +134,7 @@
      	// 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 		// 显示标题，图例和空的坐标轴
+        myChart.on("click", eConsole);  
 		var seriesLabel = {
 		    normal: {
 		        show: true,
@@ -182,6 +183,26 @@
 		
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+        
+        function eConsole(param) { 
+            if (typeof param.seriesIndex == 'undefined') {    
+                return;    
+            }    
+            if (param.type == 'click') {    
+            	var temp = document.createElement("form");
+                temp.action = "showCounts";
+                temp.method = "post";
+                temp.style.display = "none";
+
+                var opt = document.createElement("textarea");
+                opt.name = "case_place";
+                opt.value = param.name;
+                temp.appendChild(opt);
+
+                document.body.appendChild(temp);
+                temp.submit();  
+            }
+        } 
     </script>
     
     <div style="left-margin:500px;width:200px"></div>
@@ -201,6 +222,11 @@
             <input type="submit" value="按类别展示数量"/>
         </form>
     </td>
+    <td>
+	    <form action="showLevels" method="post">
+	        <input type="submit" value="按事故等级展示"/>
+	    </form>	
+	</td>
     </tr>
 	</table>
 	</div>

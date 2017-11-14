@@ -67,6 +67,18 @@
            value="com.mucfc.mapper.IndexNewsMapper" />   
        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
     </bean> 
+    
+    <bean id="levelNewsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.LevelNewsMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
+    
+    <bean id="levelMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  
+           value="com.mucfc.mapper.LevelMapper" />   
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
+    </bean> 
 	<!-- 自动扫描注解的bean -->
 	<context:component-scan base-package="com.mucfc.dao" />
 

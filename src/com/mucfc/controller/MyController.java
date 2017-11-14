@@ -28,7 +28,11 @@ public class MyController {
 	@Resource
 	private TypeMapper typeMapper;
 	@Resource
+	private LevelMapper levelMapper;
+	@Resource
 	private TypeNewsMapper typeNewsMapper;
+	@Resource
+	private LevelNewsMapper levelNewsMapper;
 	@Resource
 	private PlaceNewsMapper placeNewsMapper;
 	@Resource
@@ -139,6 +143,32 @@ public class MyController {
 		mav.addObject("news", news);
 		session.setAttribute("case_type", case_type);
 		mav.setViewName("showTypes");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/showLevels", method = RequestMethod.POST)
+	public ModelAndView showLevels(HttpServletRequest request){	
+		ModelAndView mav = new ModelAndView();
+		List<Level> levels = levelMapper.selectByLevel();
+		
+        HttpSession session = request.getSession();
+		session.setAttribute("levels", levels);
+		
+		String case_level = request.getParameter("case_level");
+		
+		if(case_level == null){
+			case_level = "Ò»°ãÊÂ¹Ê";
+		}
+		
+//		System.out.println(case_type);
+		
+		List<News> news = levelNewsMapper.showLevelNews(case_level);
+		session.setAttribute("news", news);
+		
+		mav.addObject("news", news);
+		session.setAttribute("case_level", case_level);
+		mav.setViewName("showLevels");
 		
 		return mav;
 	}

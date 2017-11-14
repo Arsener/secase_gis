@@ -31,30 +31,37 @@
     </div> 
     <div id="main" style="width: 600px;height:400px;float:left"></div>
     
+    <div id="rate" style="width: 600px;height:600px;float:left"></div>
    
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=3b1abac71d9c69f21b69c476744f7d98"></script>
     <script type="text/javascript">
     	var type_names = new Array();
     	var type_counts = new Array();
+        
+        var datas = new Array();
     	
         var map = new AMap.Map('container',{
             resizeEnable: true,
             zoom: 4,
             center: [105.293516,38.09107]
         });
+        
         <%
         for (int index = 0; index < ((List<Type>)session.getAttribute("types")).size(); index+=1)
         {
         %>
 	        type_names[<%=index%>] = "<%=((List<Type>)session.getAttribute("types")).get(index).getCase_equipment() %>";
 	        type_counts[<%=index%>] = "<%=((List<Type>)session.getAttribute("types")).get(index).getCounts() %>";
+	        
         <%
         }
         %>
         
-     // 基于准备好的dom，初始化echarts实例
+        // 柱状图
+     	// 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 		// 显示标题，图例和空的坐标轴
+        myChart.on("click", eConsole);  
 		var seriesLabel = {
 		    normal: {
 		        show: true,
@@ -104,6 +111,78 @@
 		
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
+        
+/*----------------------------------------------------------------------------------*/
+        // 饼状图
+     	// 基于准备好的dom，初始化echarts实例
+        var myChart2 = echarts.init(document.getElementById('rate'));
+
+        myChart2.on("click", eConsole);  
+        option2 = {
+       		tooltip: {
+       	        trigger: 'item',
+       	        formatter: "{a} <br/>{b}: {c} ({d}%)",
+
+       	    },
+       	    legend: {
+       	        orient: 'vertical',
+       	        x: 'right',
+       	        itemWidth: 14,
+       	        itemHeight: 14,
+       	        align: 'left',
+       	        data: type_names,
+       	        textStyle: {
+       	            color: '#000'
+       	        }
+       	    },
+       	    series: [
+       	        {
+       	            name:'案例类别比例',
+       	            type:'pie',
+       	            hoverAnimation: true,
+       	            legendHoverLink: true,
+       	            radius: ['20%', '55%'],
+       	            color: ['#915872', '#3077b7', '#9a8169', '#3f8797','#5b8144','#307889','#9c6a79','#307889'],
+       	            label: {
+       	                normal: {
+       	                    formatter: '{b}\n{d}%'
+       	                },
+       	            },
+	       
+       	            data:[
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(0).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(0).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(1).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(1).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(2).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(2).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(3).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(3).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(4).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(4).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(5).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(5).getCase_equipment() %>"}
+       	            ]
+       	        }
+       	    ]
+       	};
+		
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option2);
+        
+        function eConsole(param) { 
+            if (typeof param.seriesIndex == 'undefined') {    
+                return;    
+            }    
+            if (param.type == 'click') {    
+            	var temp = document.createElement("form");
+                temp.action = "showTypes";
+                temp.method = "post";
+                temp.style.display = "none";
+
+                var opt = document.createElement("textarea");
+                opt.name = "case_type";
+                opt.value = param.name;
+                temp.appendChild(opt);
+
+                document.body.appendChild(temp);
+                temp.submit();  
+            }
+        } 
     </script>
     
     <div style="left-margin:500px;width:200px"></div>
@@ -123,6 +202,11 @@
             <input type="submit" value="按类别展示数量"/>
         </form>
     </td>
+    <td>
+	    <form action="showLevels" method="post">
+	        <input type="submit" value="按事故等级展示"/>
+	    </form>	
+	</td>
     </tr>
 	</table>
 	</div>

@@ -93,6 +93,11 @@
             <input type="submit" value="按类别展示数量"/>
         </form>
     </td>
+    <td>
+	    <form action="showLevels" method="post">
+	        <input type="submit" value="按事故等级展示"/>
+	    </form>	
+	</td>
     </tr>
 	</table>
 	
