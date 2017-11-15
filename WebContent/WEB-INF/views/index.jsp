@@ -103,15 +103,6 @@
                 calculable: true,
                 color:visColor
             },
-            toolbox: {
-                show: true,
-                right: '3%',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
             series: seriseData
         };
 

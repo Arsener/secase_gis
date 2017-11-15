@@ -147,6 +147,7 @@ public class MyController {
 			else{
 				places.get(i).setCase_count(0);
 			}
+
 		}
 		
         HttpSession session = request.getSession();

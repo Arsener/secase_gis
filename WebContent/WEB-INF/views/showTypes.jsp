@@ -93,15 +93,6 @@
                 bottom:'3%',
                 data:legendData
             },
-            toolbox: {
-                show: true,
-                right: '3%',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
-            },
             series: seriseData
         };
 

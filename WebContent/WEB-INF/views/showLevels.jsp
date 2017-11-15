@@ -66,7 +66,7 @@
 //                   label: { normal: {show: true},emphasis: { show: true}},data:[{name:'',value:''},...]},{...}]
         var seriseData=[
                 {
-                    name: '空调',
+                    name: '',
                     type: 'map',
                     mapType: 'china',
                     label: { normal: {show: true},emphasis: { show: true}}
@@ -88,15 +88,6 @@
                 right: '3%',
                 bottom:'3%',
                 data:legendData
-            },
-            toolbox: {
-                show: true,
-                right: '3%',
-                feature: {
-                    dataView: {readOnly: false},
-                    restore: {},
-                    saveAsImage: {}
-                }
             },
             series: seriseData
         };
