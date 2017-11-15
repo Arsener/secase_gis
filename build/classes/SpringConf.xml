@@ -56,12 +56,6 @@
        <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
     </bean> 
     
-    <bean id="locationMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
-       <property name="mapperInterface"  
-           value="com.mucfc.mapper.LocationMapper" />   
-       <property name="sqlSessionFactory" ref="sqlSessionFactory" />  
-    </bean> 
-    
     <bean id="IndexNewsMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">  
        <property name="mapperInterface"  
            value="com.mucfc.mapper.IndexNewsMapper" />   

@@ -5,8 +5,6 @@ public class Detail {
 	private String case_describe;
 	private String case_equipment;
 	private String case_place;
-	private double place_lon;
-	private double place_lat;
 	public String getCase_name() {
 		return case_name;
 	}
@@ -30,18 +28,6 @@ public class Detail {
 	}
 	public void setCase_place(String case_place) {
 		this.case_place = case_place;
-	}
-	public double getPlace_lon() {
-		return place_lon;
-	}
-	public void setPlace_lon(double place_lon) {
-		this.place_lon = place_lon;
-	}
-	public double getPlace_lat() {
-		return place_lat;
-	}
-	public void setPlace_lat(double place_lat) {
-		this.place_lat = place_lat;
 	}
 	
 	

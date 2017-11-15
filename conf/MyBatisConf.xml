@@ -8,7 +8,6 @@
       <typeAlias alias="Type" type="com.mucfc.model.Type"/> 
       <typeAlias alias="News" type="com.mucfc.model.News"/> 
       <typeAlias alias="Detail" type="com.mucfc.model.Detail"/> 
-      <typeAlias alias="Location" type="com.mucfc.model.Location"/> 
       <typeAlias alias="Level" type="com.mucfc.model.Level"/> 
    </typeAliases>  
    <!-- 配置Mapper文件的路径 -->
@@ -18,7 +17,6 @@
        <mapper resource="mapper/TypeNewsMapper.xml"/>
        <mapper resource="mapper/PlaceNewsMapper.xml"/>
        <mapper resource="mapper/DetailMapper.xml"/>
-       <mapper resource="mapper/LocationMapper.xml"/>
        <mapper resource="mapper/IndexNewsMapper.xml"/>
        <mapper resource="mapper/LevelMapper.xml"/>
        <mapper resource="mapper/LevelNewsMapper.xml"/>
