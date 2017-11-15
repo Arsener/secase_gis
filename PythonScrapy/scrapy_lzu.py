@@ -45,10 +45,10 @@ for type in types:
         print(case_describe)
 
         case_place = case_name[5:7]
-        if case_place == '上海' or case_place == '北京':
-            case_place = case_place + '市'
-        else:
-            case_place = case_place + '省'
+        # if case_place == '上海' or case_place == '北京':
+            # case_place = case_place + '市'
+        # else:
+            # case_place = case_place + '省'
         print(case_place)
 
         if type == '管道':
