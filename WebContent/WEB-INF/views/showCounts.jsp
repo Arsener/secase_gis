@@ -23,7 +23,7 @@
    	    
     </div> 
 	<div id="map" style="width: 1000px;height:700px;float:left"></div>
-    <div id="main" style="width: 600px;height:400px;float:left"></div>
+    <div id="main" style="width: 600px;height:600px;float:left"></div>
     
     <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=3b1abac71d9c69f21b69c476744f7d98"></script>  
   

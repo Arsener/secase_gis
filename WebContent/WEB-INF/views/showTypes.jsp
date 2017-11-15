@@ -20,8 +20,8 @@
     </div> 
     <div id="map" style="width: 1000px;height:700px;float:left"></div>
     <div id="main" style="width: 600px;height:400px;float:left"></div>
-    
     <div id="rate" style="width: 600px;height:600px;float:left"></div>
+    
    
     <script type="text/javascript">
     	var type_names = new Array();
@@ -182,7 +182,7 @@
        	        x: 'right',
        	        itemWidth: 14,
        	        itemHeight: 14,
-       	        align: 'left',
+       	        align: 'right',
        	        data: type_names,
        	        textStyle: {
        	            color: '#000'
@@ -195,7 +195,7 @@
        	            hoverAnimation: true,
        	            legendHoverLink: true,
        	            radius: ['20%', '55%'],
-       	            color: ['#915872', '#3077b7', '#9a8169', '#3f8797','#5b8144','#307889','#9c6a79','#307889'],
+       	         	color: ['#915872', '#3077b7', '#9a8169', '#3f8797','#5b8144','#307889','#9c6a79', '#3f6767'],
        	            label: {
        	                normal: {
        	                    formatter: '{b}\n{d}%'
@@ -208,7 +208,10 @@
        	                {value:<%=((List<Type>)session.getAttribute("types")).get(2).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(2).getCase_equipment() %>"},
        	                {value:<%=((List<Type>)session.getAttribute("types")).get(3).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(3).getCase_equipment() %>"},
        	                {value:<%=((List<Type>)session.getAttribute("types")).get(4).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(4).getCase_equipment() %>"},
-       	                {value:<%=((List<Type>)session.getAttribute("types")).get(5).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(5).getCase_equipment() %>"}
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(5).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(5).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(6).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(6).getCase_equipment() %>"},
+       	                {value:<%=((List<Type>)session.getAttribute("types")).get(7).getCounts() %>, name:"<%=((List<Type>)session.getAttribute("types")).get(7).getCase_equipment() %>"}
+           	            
        	            ]
        	        }
        	    ]
