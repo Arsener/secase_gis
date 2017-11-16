@@ -38,8 +38,7 @@
     <center>
     
     <h1 align="center"> <font color="red"> 特种设备案例类别数量展示 </font> </h1>
-	<div id="container" tabindex="0"></div> 
-    <div id="map" style="width: 1000px;height:700px"></div>
+    <div id="map" style="width:1000px;height:700px"></div>
     
     
     </center>
@@ -171,7 +170,6 @@
             },
             series: seriseData
         };
-
         
         // 使用刚指定的配置项和数据显示图表。
         myChartMap.setOption(option);
@@ -197,7 +195,6 @@
 		        textBorderColor: '#333',
 		    }
 		}
-
 		option = {
 		    title: {
 		        text: '不同类别特种设备案例数量'
@@ -245,13 +242,11 @@
         // 饼状图
      	// 基于准备好的dom，初始化echarts实例
         var myChart2 = echarts.init(document.getElementById('rate'));
-
         myChart2.on("click", eConsole);  
         option2 = {
        		tooltip: {
        	        trigger: 'item',
        	        formatter: "{a} <br/>{b}: {c} ({d}%)",
-
        	    },
        	    legend: {
        	        orient: 'vertical',
@@ -271,7 +266,7 @@
        	            hoverAnimation: true,
        	            legendHoverLink: true,
        	            radius: ['20%', '55%'],
-       	         	color: ['#915872', '#3077b7', '#9a8169', '#3f8797','#5b8144','#307889','#9c6a79', '#3f6767'],
+       	         	color: ['#96B8FF', '#D863F2', '#FFF199', '#ADFF99','#FF9494','#9CD8F0','#24D197', '#ECF752'],
        	            label: {
        	                normal: {
        	                    formatter: '{b}\n{d}%'
@@ -305,12 +300,10 @@
                 temp.action = "showTypes";
                 temp.method = "post";
                 temp.style.display = "none";
-
                 var opt = document.createElement("textarea");
                 opt.name = "case_type";
                 opt.value = param.name;
                 temp.appendChild(opt);
-
                 document.body.appendChild(temp);
                 temp.submit();  
             }

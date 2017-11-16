@@ -23,6 +23,22 @@
         content:"• ";
         color:black;
     }
+    #main
+    {
+        position:absolute;
+        left:30%;
+        top:100;
+        margin-left:-250px;
+        margin-top:-150px;
+    }
+    #main_2
+    {
+        position:absolute;
+        left:70%;
+        top:100;
+        margin-left:-250px;
+        margin-top:-150px;
+    }
     </style>
     
     <title>特种设备案例事故等级展示</title>
@@ -57,11 +73,25 @@
 	  </table>
 	</div>
     
+    <form action="showLevels" method="post">
+    	<p>选择事故等级：
+    		<select name="case_level">
+    			<option value="一般事故">一般事故</option>
+    			<option value="重大事故">重大事故</option>
+    			<option value="极其重大事故">极其重大事故</option>
+    	    </select>
+    	</p>
+		<input type="submit" value="展示此等级全部案例">
+    </form>
+    
     <h3>当前展示案例事故等级为：<%=(String)session.getAttribute("case_level") %></h3>
     
     <c:forEach items="${news }" var="news_item" varStatus="vs">
 		<a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
 	</c:forEach>
+	
+	
+	<h1> </br> </br> </br> </br> </br> </h1>
 
     <div id="main" style="padding-right:7%;width: 600px;height:400px;float:right"></div>
     <div id="main_2" style="width: 600px;height:400px;float:right"></div>

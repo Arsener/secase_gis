@@ -28,14 +28,16 @@
   </head>
   
   <body>
+    <center>
     <h1 align="center"> <font color="red"> 特种设备案例展示 </font> </h1>
     
     <div id="main" style="width: 1000px;height:700px"></div>
-    
+    </center>
     
     <script type="text/javascript">
     	// 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
+        myChart.on("click", eConsole); 
     	
         (function (root, factory) {
             if (typeof define === 'function' && define.amd) {
@@ -119,7 +121,30 @@
             series: seriseData
         };
 
-        
+        function eConsole(param) { 
+            if (typeof param.seriesIndex == 'undefined') {    
+                return;    
+            }    
+            if (param.type == 'click') {    
+            	var temp = document.createElement("form");
+                temp.action = "";
+                temp.method = "post";
+                temp.style.display = "none";
+
+                var opt = document.createElement("textarea");
+                opt.name = "case_place";
+                opt.value = param.name;
+                temp.appendChild(opt);
+
+                var opt1 = document.createElement("textarea");
+                opt1.name = "case_type";
+                opt1.value = "全部";
+                temp.appendChild(opt1);
+
+                document.body.appendChild(temp);
+                temp.submit();  
+            }
+        } 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
