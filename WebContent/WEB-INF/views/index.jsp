@@ -116,17 +116,17 @@
 	<table>
 	<tr>
 	<td>
-	    <form action="showCounts" method="post">
+	    <form action="showCounts" method="post" target="_blank">
             <input type="submit" value="按省份展示数量"/>
         </form>
     </td>
     <td>
-        <form action="showTypes" method="post">
+        <form action="showTypes" method="post" target="_blank">
             <input type="submit" value="按类别展示数量"/>
         </form>
     </td>
     <td>
-	    <form action="showLevels" method="post">
+	    <form action="showLevels" method="post" target="_blank">
 	        <input type="submit" value="按事故等级展示"/>
 	    </form>	
 	</td>
@@ -207,7 +207,7 @@
     <c:forEach items="${news }" var="news_item" varStatus="vs">
       <ul>
         <li>
-		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
 	    </li>
 	  </ul>
 	</c:forEach>

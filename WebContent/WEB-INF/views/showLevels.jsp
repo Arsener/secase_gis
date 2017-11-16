@@ -335,7 +335,7 @@
     <h3>当前展示案例事故等级为：<%=(String)session.getAttribute("case_level") %></h3>
     
     <c:forEach items="${news }" var="news_item" varStatus="vs">
-		<a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+		<a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
 	</c:forEach>
     
   </body>
