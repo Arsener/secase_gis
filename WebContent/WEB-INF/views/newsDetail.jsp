@@ -18,7 +18,7 @@
   <body>
     <center>
     	<h1><%=((Detail)session.getAttribute("detail")).getCase_name() %></h1>
-    	<strong>发生地点：</strong><%=((Detail)session.getAttribute("detail")).getCase_place() %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>案例类别：</strong><%=((Detail)session.getAttribute("detail")).getCase_equipment() %>
+    	<strong>发生地点：</strong><%=((Detail)session.getAttribute("detail")).getCase_place() %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>案例类别：</strong><%=((Detail)session.getAttribute("detail")).getCase_equipment() %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>伤亡情况：</strong><%=((Detail)session.getAttribute("detail")).getCase_info() %>
     
     	<div id="main" style="width: 1000px;height:700px;float:left"></div>
 	    

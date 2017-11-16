@@ -4,6 +4,6 @@
 <mapper namespace="com.mucfc.mapper.DetailMapper">	
 	<!--  查询单条记录  -->  
     <select id="showDetail" parameterType="int" resultType="Detail">  
-		SELECT case_name, case_describe, case_equipment, case_place FROM cases WHERE  case_id = #{case_id} 
+		SELECT case_name, case_describe, case_equipment, case_place, case_info FROM cases WHERE case_id = #{case_id} 
     </select>  
 </mapper>

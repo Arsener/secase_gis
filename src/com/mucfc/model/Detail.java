@@ -5,6 +5,7 @@ public class Detail {
 	private String case_describe;
 	private String case_equipment;
 	private String case_place;
+	private String case_info;
 	public String getCase_name() {
 		return case_name;
 	}
@@ -29,6 +30,11 @@ public class Detail {
 	public void setCase_place(String case_place) {
 		this.case_place = case_place;
 	}
-	
+	public String getCase_info() {
+		return case_info;
+	}
+	public void setCase_info(String case_info) {
+		this.case_info = case_info;
+	}
 	
 }
