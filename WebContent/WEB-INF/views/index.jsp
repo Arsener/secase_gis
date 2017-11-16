@@ -11,13 +11,26 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
     
+    <style type="text/css">
+    ul
+    {
+        list-style:none;
+        counter-reset:count;
+    }
+    li:before
+    {
+        content:"• ";
+        color:black;
+    }
+    </style>
+    
     <title>特种设备案例展示</title>
   </head>
   
   <body>
     <h1 align="center"> <font color="red"> 特种设备案例展示 </font> </h1>
     
-    <div id="main" style="width: 1000px;height:700px;float:left"></div>
+    <div id="main" style="width: 1000px;height:700px"></div>
     
     
     <script type="text/javascript">
@@ -113,37 +126,28 @@
     </br>
     
     <div align="center"> 
-	<table>
-	<tr>
-	<td>
-	    <form action="showCounts" method="post" target="_blank">
-            <input type="submit" value="按省份展示数量"/>
-        </form>
-    </td>
-    <td>
-        <form action="showTypes" method="post" target="_blank">
-            <input type="submit" value="按类别展示数量"/>
-        </form>
-    </td>
-    <td>
-	    <form action="showLevels" method="post" target="_blank">
-	        <input type="submit" value="按事故等级展示"/>
-	    </form>	
-	</td>
-    </tr>
-	</table>
+		<table>
+			<tr>
+				<td>
+				    <form action="showCounts" method="post" target="_blank">
+			            <input type="submit" value="按省份展示数量"/>
+			        </form>
+			    </td>
+			    <td>
+			        <form action="showTypes" method="post" target="_blank">
+			            <input type="submit" value="按类别展示数量"/>
+			        </form>
+			    </td>
+			    <td>
+				    <form action="showLevels" method="post" target="_blank">
+				        <input type="submit" value="按事故等级展示"/>
+				    </form>	
+				</td>
+		    </tr>
+		</table>
+	</div>
 	
 	</br>
-	
-	<!--底部-->
-	<p align="center"> GIS最垃圾小组 </p>
-	
-	<!-- 音乐播放器 -->
-	<div align="center">
-	    <embed src="C:\Users\arsener\workspace_GIS\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
-	    hidden="false" autostart="true" loop="true">
-	    </embed>
-	</div>
     
     <form action="" method="post">
     	<p>选择省份：
@@ -211,6 +215,9 @@
 	    </li>
 	  </ul>
 	</c:forEach>
+
+	<!--底部-->
+	<p align="center"> GIS第五小组 </p>
   </body>
 </html>
 

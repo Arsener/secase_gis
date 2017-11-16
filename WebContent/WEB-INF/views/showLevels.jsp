@@ -3,24 +3,68 @@
     pageEncoding="utf-8"%>
 <%@ page import="com.mucfc.model.*" %>
 <%@ page import="java.util.*" %>
+
 <!doctype html>
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-   
 	<script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
-
+    
+    <style type="text/css">
+    ul
+    {
+        list-style:none;
+        counter-reset:count;
+    }
+    li:before
+    {
+        content:"• ";
+        color:black;
+    }
+    </style>
     
     <title>特种设备案例事故等级展示</title>
   </head>
+  
   <body>
-	<div id="container" tabindex="0">
-   	    
-    </div> 
+    <center>
+    
+    <h1 align="center"> <font color="red"> 特种设备案例事故等级展示 </font> </h1>
+	<div id="container" tabindex="0"> </div> 
     <div id="map" style="width: 1000px;height:700px;"></div>
-    <div id="main" style="width: 600px;height:400px;"></div>
-    <div id="main_2" style="width: 600px;height:400px;"></div>
+    
+    <div align="center"> 
+	  <table>
+	    <tr>
+	      <td>
+	        <form action="showCounts" method="post">
+              <input type="submit" value="按省份展示数量"/>
+            </form>
+          </td>
+          <td>
+            <form action="showTypes" method="post">
+              <input type="submit" value="按类别展示数量"/>
+            </form>
+          </td>
+          <td>
+	        <form action="showLevels" method="post">
+	          <input type="submit" value="按事故等级展示"/>
+	        </form>	
+	      </td>
+        </tr>
+	  </table>
+	</div>
+    
+    <h3>当前展示案例事故等级为：<%=(String)session.getAttribute("case_level") %></h3>
+    
+    <c:forEach items="${news }" var="news_item" varStatus="vs">
+		<a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
+	</c:forEach>
+
+    <div id="main" style="padding-right:7%;width: 600px;height:400px;float:right"></div>
+    <div id="main_2" style="width: 600px;height:400px;float:right"></div>
     
     <script type="text/javascript">
 		var level_names = new Array();
@@ -66,7 +110,7 @@
 //                   label: { normal: {show: true},emphasis: { show: true}},data:[{name:'',value:''},...]},{...}]
         var seriseData=[
                 {
-                    name: '',
+                    name: '空调',
                     type: 'map',
                     mapType: 'china',
                     label: { normal: {show: true},emphasis: { show: true}}
@@ -124,15 +168,6 @@
             tooltip : {
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {d}%"
-            },
-            toolbox: {
-                show : true,
-                feature : {
-                    mark : {show: true},
-                    dataView : {show: true, readOnly: false},
-                    restore : {show: true},
-                    saveAsImage : {show: true}
-                }
             },
             
 
@@ -309,34 +344,7 @@
                }
            } 
     </script>
-    
-    
-    <form action="showCounts" method="post">
-        <input type="submit" value="按省份展示数量"/>
-    </form>
-    <form action="showTypes" method="post">
-        <input type="submit" value="按类别展示数量"/>
-    </form>
-     <form action="showLevels" method="post">
-        <input type="submit" value="按事故等级展示"/>
-    </form>
-    
-    <form action="showLevels" method="post">
-    	<p>选择事故等级：
-    		<select name="case_level">
-    			<option value="一般事故">一般事故</option>
-    			<option value="重大事故">重大事故</option>
-    			<option value="极其重大事故">极其重大事故</option>
-    	    </select>
-    	</p>
-		<input type="submit" value="展示此等级全部案例">
-    </form>
-    
-    <h3>当前展示案例事故等级为：<%=(String)session.getAttribute("case_level") %></h3>
-    
-    <c:forEach items="${news }" var="news_item" varStatus="vs">
-		<a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
-	</c:forEach>
-    
+	
+    </center>
   </body>
 </html>

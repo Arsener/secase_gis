@@ -151,7 +151,6 @@ public class MyController {
 		}
 		
         HttpSession session = request.getSession();
-        System.out.println(placesAll.size());
 		session.setAttribute("places", places);
 		session.setAttribute("placesAll", placesAll);
 		

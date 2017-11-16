@@ -11,16 +11,92 @@
     
     <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
     
+    <style type="text/css">
+    #lmargin
+	{
+        padding-left:10%
+    }
+    ul
+    {
+        list-style:none;
+        counter-reset:count;
+    }
+    li:before
+    {
+        content:"• ";
+        color:black;
+    }
+    heading
+    {
+        left:30px;
+    }
+    </style>
+    
     <title>特种设备案例类别数量展示</title>
   </head>
   <body>
+    <center>
+    
     <h1 align="center"> <font color="red"> 特种设备案例类别数量展示 </font> </h1>
-	<div id="container" tabindex="0">
-   	    
-    </div> 
-    <div id="map" style="width: 1000px;height:700px;float:left"></div>
-    <div id="main" style="width: 600px;height:400px;float:left"></div>
-    <div id="rate" style="width: 600px;height:600px;float:left"></div>
+	<div id="container" tabindex="0"></div> 
+    <div id="map" style="width: 1000px;height:700px"></div>
+    
+    
+    </center>
+    
+    <div style="right-margin:500px;width:200px"></div>
+    
+    <div align="center"> 
+	  <table>
+	    <tr>
+	      <td>
+	        <form action="showCounts" method="post">
+              <input type="submit" value="按省份展示数量"/>
+            </form>
+          </td>
+          <td>
+            <form action="showTypes" method="post">
+              <input type="submit" value="按类别展示数量"/>
+            </form>
+          </td>
+          <td>
+	        <form action="showLevels" method="post">
+	          <input type="submit" value="按事故等级展示"/>
+	        </form>	
+	      </td>
+        </tr>
+	  </table>
+	</div>
+    
+    <form action="showTypes" method="post">
+    	<p>选择设备种类：
+    		<select name="case_type">
+    			<option value="大型游乐设施">大型游乐设施</option>
+    			<option value="锅炉">锅炉</option>
+    			<option value="电梯">电梯</option>
+    			<option value="压力管道">压力管道</option>
+    			<option value="起重机械">起重机械</option>
+    			<option value="客运索道">客运索道</option>
+    			<option value="场（厂）内专用机动车辆">场（厂）内专用机动车辆</option>
+    			<option value="压力容器">压力容器</option>
+    	    </select>
+    	</p>
+		<input type="submit" value="展示此类别全部案例">
+    </form>
+    
+    <h3>当前展示案例设备类别为：<%=(String)session.getAttribute("case_type") %></h3>
+    
+    <c:forEach items="${news }" var="news_item" varStatus="vs">
+      <ul>
+        <li>
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+	    </li>
+	  </ul>
+	</c:forEach>
+	</div>
+    
+    <div id="rate" style="padding-right:100px;width: 600px;height:400px;float:left"></div>
+    <div id="main" style="width: 600px;height:400px;float:left"></div> 
     
    
     <script type="text/javascript">
@@ -240,68 +316,6 @@
             }
         } 
     </script>
-    
-    <div style="left-margin:500px;width:200px"></div>
-    
-    </br>
-    
-    <div align="left"> 
-	<table>
-	<tr>
-	<td>
-	    <form action="showCounts" method="post">
-            <input type="submit" value="按省份展示数量"/>
-        </form>
-    </td>
-    <td>
-        <form action="showTypes" method="post">
-            <input type="submit" value="按类别展示数量"/>
-        </form>
-    </td>
-    <td>
-	    <form action="showLevels" method="post">
-	        <input type="submit" value="按事故等级展示"/>
-	    </form>	
-	</td>
-    </tr>
-	</table>
-	</div>
-    
-    <form action="showTypes" method="post">
-    	<p>选择设备种类：
-    		<select name="case_type">
-    		    <option value="">请选择...</option>
-    			<option value="大型游乐设施">大型游乐设施</option>
-    			<option value="锅炉">锅炉</option>
-    			<option value="电梯">电梯</option>
-    			<option value="压力管道">压力管道</option>
-    			<option value="起重机械">起重机械</option>
-    			<option value="客运索道">客运索道</option>
-    			<option value="场（厂）内专用机动车辆">场（厂）内专用机动车辆</option>
-    			<option value="压力容器">压力容器</option>
-    	    </select>
-    	</p>
-		<input type="submit" value="展示此类别全部案例">
-    </form>
-    
-    <h3>当前展示案例设备类别为：<%=(String)session.getAttribute("case_type") %></h3>
-    
-    <c:forEach items="${news }" var="news_item" varStatus="vs">
-      <ul>
-        <li>
-		  <a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
-	    </li>
-	  </ul>
-	</c:forEach>
-	
-	<!--底部-->
-	<p align="center"> GIS最垃圾小组 </p>
-	
-	<div align="center">
-	    <embed src="E:\JAVA\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
-	    hidden="false" autostart="true" loop="true">
-	    </embed>
-	</div>
     
   </body>
 </html>

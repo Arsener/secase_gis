@@ -13,19 +13,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    
+    <style type="text/css">
+    #lmargin
+    {
+        padding-left:5%
+    }
+    ul
+    {
+        list-style:none;
+        counter-reset:count;
+    }
+    li:before
+    {
+        content:"• ";
+        color:black;
+    }
+    heading
+    {
+        left:30px;
+    }
+    </style>
     
     <title>特种设备案例地区数量展示</title>
   </head>
   <body>
+  	<center>
     <h1 align="center"> <font color="red"> 特种设备案例地区数量展示 </font> </h1>
-	<div id="container" tabindex="0">
-   	    
-    </div> 
-	<div id="map" style="width: 1000px;height:700px;float:left"></div>
-    <div id="main" style="width: 600px;height:600px;float:left"></div>
+	<div id="container" tabindex="0"></div> 
+	<div id="map" style="width: 1000px;height:700px"></div>
+	</center>
+    <div id="main" style="padding-right:100px;width: 600px;height:600px;float:right"></div>
     
-    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=3b1abac71d9c69f21b69c476744f7d98"></script>  
   
     <script type="text/javascript">
     	var place_names = new Array();
@@ -239,31 +258,31 @@
         } 
     </script>
     
-    <div style="left-margin:500px;width:200px"></div>
+    <div style="right-margin:500px;width:200px"></div>
     
     </br>
     
-    <div align="left"> 
-	<table>
-	<tr>
-	<td>
-	    <form action="showCounts" method="post">
-            <input type="submit" value="按省份展示数量"/>
-        </form>
-    </td>
-    <td>
-        <form action="showTypes" method="post">
-            <input type="submit" value="按类别展示数量"/>
-        </form>
-    </td>
-    <td>
-	    <form action="showLevels" method="post">
-	        <input type="submit" value="按事故等级展示"/>
-	    </form>	
-	</td>
-    </tr>
-	</table>
-	</div>
+    <div id="lmargin"> 
+	  <table>
+	    <tr>
+	      <td>
+	        <form action="showCounts" method="post">
+              <input type="submit" value="按省份展示数量"/>
+            </form>
+          </td>
+          <td>
+            <form action="showTypes" method="post">
+              <input type="submit" value="按类别展示数量"/>
+            </form>
+          </td>
+          <td>
+	        <form action="showLevels" method="post">
+	          <input type="submit" value="按事故等级展示"/>
+	        </form>	
+	      </td>
+        </tr>
+	  </table>
+    </div>
     
     <form action="" method="post">
     	<p>选择省份：
@@ -322,15 +341,5 @@
 	</br>
 	</br>
 	
-	
-	
-	<!--底部-->
-	<p align="center"> GIS最垃圾小组 </p>
-	
-	<div align="center">
-	    <embed src="C:\Users\arsener\workspace_GIS\secase_gis\WebContent\WEB-INF\views\Astral Requiem.mp3" width=300 height=40 tyep=audio/mpeg 
-	    hidden="false" autostart="true" loop="true">
-	    </embed>
-	</div>
   </body>
 </html>

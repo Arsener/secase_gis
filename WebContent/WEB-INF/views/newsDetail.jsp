@@ -13,14 +13,26 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
     
+    <style type="text/css">
+    p
+    {
+        font-size:20px;
+        margin:100px 100px;
+        line-higet:22px;
+          
+    }
+    </style>
+    
     <title>特种设备案例</title>
   </head>
   <body>
     <center>
     	<h1><%=((Detail)session.getAttribute("detail")).getCase_name() %></h1>
-    	<strong>发生地点：</strong><%=((Detail)session.getAttribute("detail")).getCase_place() %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>案例类别：</strong><%=((Detail)session.getAttribute("detail")).getCase_equipment() %>&nbsp;&nbsp;&nbsp;&nbsp;<strong>伤亡情况：</strong><%=((Detail)session.getAttribute("detail")).getCase_info() %>
+    	<strong>发生地点：</strong><%=((Detail)session.getAttribute("detail")).getCase_place() %>&nbsp;&nbsp;&nbsp;&nbsp;
+    	<strong>案例类别：</strong><%=((Detail)session.getAttribute("detail")).getCase_equipment() %>&nbsp;&nbsp;&nbsp;&nbsp;
+    	<strong>伤亡情况：</strong><%=((Detail)session.getAttribute("detail")).getCase_info() %>
     
-    	<div id="main" style="width: 1000px;height:700px;float:left"></div>
+    	<div id="main" style="width: 1000px;height:700px"></div>
 	    
 	    <script type="text/javascript">
     	// 基于准备好的dom，初始化echarts实例
@@ -115,7 +127,9 @@
     
     </center>
     <p>
-    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=((Detail)session.getAttribute("detail")).getCase_describe() %>
+        <font face="宋体">
+    	&nbsp;&nbsp;&nbsp;<%=((Detail)session.getAttribute("detail")).getCase_describe() %>
+        </font>
     </p>
   </body>
 </html>
