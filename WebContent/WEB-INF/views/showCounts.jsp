@@ -32,24 +32,17 @@
     	var place_counts = new Array();
 		
         var maxCount = -1;
-        var pIndex = 0;
         <%
         for (int index = 0; index < ((List<Place>)session.getAttribute("places")).size(); index+=1){
         %>
-        	if(<%=((List<Place>)session.getAttribute("places")).get(index).getCase_count() %> != 0){
-	            place_names[pIndex] = "<%=((List<Place>)session.getAttribute("places")).get(index).getPlace_name() %>";
-	            place_counts[pIndex] = <%=((List<Place>)session.getAttribute("places")).get(index).getCase_count() %>;
-        		if(place_counts[pIndex] > maxCount){
-        			maxCount = place_counts[pIndex];
-        		}
-
-        		//alert(place_names[pIndex])
-        		pIndex += 1;
-        	}
+        	place_names[<%=index %>] = "<%=((List<Place>)session.getAttribute("places")).get(index).getPlace_name() %>";
+            place_counts[<%=index %>] = <%=((List<Place>)session.getAttribute("places")).get(index).getCase_count() %>;
+       		if(place_counts[<%=index %>] > maxCount){
+       			maxCount = place_counts[<%=index %>];
+       		}
         <%
         }
         %>
-        pIndex = 0;
         
      // 基于准备好的dom，初始化echarts实例
         var myChartMap = echarts.init(document.getElementById('map'));
@@ -84,40 +77,40 @@
         }));
      
       	var datas = [
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(0).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(0).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(1).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(1).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(2).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(2).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(3).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(3).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(4).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(4).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(5).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(5).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(6).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(6).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(7).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(7).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(8).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(8).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(9).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(9).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(10).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(10).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(11).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(11).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(12).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(12).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(13).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(13).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(14).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(14).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(15).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(15).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(16).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(16).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(17).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(17).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(18).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(18).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(19).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(19).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(20).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(20).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(21).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(21).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(22).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(22).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(23).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(23).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(24).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(24).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(25).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(25).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(26).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(26).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(27).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(27).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(28).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(28).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(29).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(29).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(30).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(30).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(31).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(31).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(32).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(32).getCase_count() %> },
-                     {name:"<%=((List<Place>)session.getAttribute("places")).get(33).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("places")).get(33).getCase_count() %> }
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(0).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(0).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(1).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(1).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(2).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(2).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(3).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(3).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(4).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(4).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(5).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(5).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(6).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(6).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(7).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(7).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(8).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(8).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(9).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(9).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(10).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(10).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(11).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(11).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(12).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(12).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(13).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(13).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(14).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(14).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(15).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(15).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(16).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(16).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(17).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(17).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(18).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(18).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(19).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(19).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(20).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(20).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(21).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(21).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(22).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(22).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(23).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(23).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(24).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(24).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(25).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(25).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(26).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(26).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(27).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(27).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(28).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(28).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(29).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(29).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(30).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(30).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(31).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(31).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(32).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(32).getCase_count() %> },
+                     {name:"<%=((List<Place>)session.getAttribute("placesAll")).get(33).getPlace_name() %>",value: <%=((List<Place>)session.getAttribute("placesAll")).get(33).getCase_count() %> }
                      
                  ];
       	

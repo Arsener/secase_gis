@@ -124,17 +124,17 @@ public class MyController {
 	@RequestMapping(value="/showCounts", method = RequestMethod.POST)
 	public ModelAndView showCounts(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView();	
-		List<Place> places_part = placeMapper.showByPlace();
+		List<Place> places = placeMapper.showByPlace();
 		
-		List<Place> places = new ArrayList<Place>();
+		List<Place> placesAll = new ArrayList<Place>();
 		for(int i = 0; i < place_list.size(); i++){
-			places.add(new Place());
-			places.get(i).setPlace_name(place_list.get(i));
+			placesAll.add(new Place());
+			placesAll.get(i).setPlace_name(place_list.get(i));
 			
 			boolean in = false;
 			int index = -1;
-			for(int j = 0; j < places_part.size(); j++){
-				if(place_list.get(i).equals(places_part.get(j).getPlace_name())){
+			for(int j = 0; j < places.size(); j++){
+				if(place_list.get(i).equals(places.get(j).getPlace_name())){
 					in = true;
 					index = j;
 					break;
@@ -142,17 +142,18 @@ public class MyController {
 			}
 			
 			if (in){
-				places.get(i).setCase_count(places_part.get(index).getCase_count());
+				placesAll.get(i).setCase_count(places.get(index).getCase_count());
 			}
 			else{
-				places.get(i).setCase_count(0);
+				placesAll.get(i).setCase_count(0);
 			}
 
 		}
 		
         HttpSession session = request.getSession();
-        System.out.println(places.size());
+        System.out.println(placesAll.size());
 		session.setAttribute("places", places);
+		session.setAttribute("placesAll", placesAll);
 		
 		String case_place = request.getParameter("case_place");
 		if(case_place == null){
