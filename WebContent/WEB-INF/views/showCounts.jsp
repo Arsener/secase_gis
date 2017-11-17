@@ -206,7 +206,7 @@
 		        }
 		    },
 		    legend: {
-		        data: ['案例数量']
+		        data: ['']
 		    },
 		    grid: {
 		        left: 100
