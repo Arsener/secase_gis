@@ -88,7 +88,7 @@
     <c:forEach items="${news }" var="news_item" varStatus="vs">
       <ul>
         <li>
-		  <a href="newsDetail?case_id=${news_item.getCase_id() }">${news_item.getCase_name() }</a><br />
+		  <a href="newsDetail?case_id=${news_item.getCase_id() }" target="_blank">${news_item.getCase_name() }</a><br />
 	    </li>
 	  </ul>
 	</c:forEach>
